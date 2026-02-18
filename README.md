@@ -75,15 +75,15 @@ go build -o ai-guardian .
 # 4. 访问 http://localhost:8080
 ```
 
-详见 [INSTALL.md](INSTALL.md) 和 [USAGE.md](USAGE.md)。
+详见 [INSTALL.md](docs/INSTALL.md) 和 [USAGE.md](docs/USAGE.md)。
 
 ## 📚 文档索引
 
 | 文档 | 说明 |
 |------|------|
-| [INSTALL.md](INSTALL.md) | 环境准备与安装步骤 |
-| [USAGE.md](USAGE.md) | 使用说明与游戏流程 |
-| [DEPLOY.md](DEPLOY.md) | 生产环境部署指南 |
-| [API.md](API.md) | 后端 API 接口文档 |
-| [ENV_VARS.md](ENV_VARS.md) | 配置项参考（config.yaml） |
-| [SPECIAL_ENV.md](SPECIAL_ENV.md) | 特殊环境与边界情况说明 |
+| [INSTALL.md](docs/INSTALL.md) | 环境准备与安装步骤 |
+| [USAGE.md](docs/USAGE.md) | 使用说明与游戏流程 |
+| [DEPLOY.md](docs/DEPLOY.md) | 生产环境部署指南 |
+| [API.md](docs/API.md) | 后端 API 接口文档 |
+| [ENV_VARS.md](docs/ENV_VARS.md) | 配置项参考（config.yaml） |
+| [SPECIAL_ENV.md](docs/SPECIAL_ENV.md) | 特殊环境与边界情况说明 |
