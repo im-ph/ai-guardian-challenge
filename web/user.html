@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的对话 - AI守护者挑战</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🛡️ AI守护者挑战</h1>
+            <p class="subtitle">我的对话</p>
+            <div class="header-actions">
+                <button class="btn-secondary" onclick="window.location.href='/'">← 返回首页</button>
+                <button class="btn-secondary" onclick="logout()">退出登录</button>
+            </div>
+        </header>
+
+        <div class="user-section">
+            <button id="newChatBtn" class="new-chat-btn">➕ 开始新对话</button>
+            <div id="userConversations" class="user-conversations">
+                <div class="loading">加载中...</div>
+            </div>
+        </div>
+    </div>
+    <script src="user.js"></script>
+</body>
+
+</html>

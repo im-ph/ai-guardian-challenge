@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI对话 - AI守护者挑战</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <div class="chat-title">
+                <h2>🛡️ AI守护者挑战</h2>
+                <div id="turnCounter" class="turn-counter">剩余轮数: 20/20</div>
+            </div>
+            <div style="display:flex;gap:8px;">
+                <button onclick="window.location.href='/user.html'" class="back-btn">← 返回</button>
+                <button onclick="window.location.href='/'" class="home-btn">🏠 首页</button>
+            </div>
+        </header>
+
+        <div id="chatMessages" class="chat-messages"></div>
+
+        <div class="chat-input-section">
+            <div id="chatStatus" class="chat-status"></div>
+            <div id="imagePreview" class="image-preview" style="display:none;">
+                <div class="image-preview-inner">
+                    <img id="previewImg" src="" alt="预览">
+                    <button id="removeImage" class="remove-image-btn">×</button>
+                </div>
+            </div>
+            <div class="chat-input-wrapper">
+                <button id="uploadBtn" class="upload-btn">📎</button>
+                <textarea id="messageInput" placeholder="输入你的消息..." rows="1" disabled></textarea>
+                <button id="sendBtn" class="send-btn" disabled>发送</button>
+            </div>
+            <div class="char-counter-wrapper">
+                <span id="charCounter" class="char-counter">0/1500</span>
+            </div>
+            <input type="file" id="imageInput" accept="image/*" style="display:none;">
+        </div>
+    </div>
+
+    <!-- 新对话验证弹窗 -->
+    <div id="newChatModal" class="modal">
+        <div class="modal-content">
+            <h2>🎮 开始新挑战</h2>
+            <p class="modal-desc">完成验证后即可开始与AI对话</p>
+            <div id="turnstile-newchat" style="margin: 16px 0; text-align: center;">
+                <button type="button" id="simpleCaptchaChatBtn" class="verify-btn"
+                    onclick="doSimpleCaptcha()">点击进行人机验证</button>
+            </div>
+            <button class="submit-btn" onclick="confirmNewChat()">开始对话</button>
+            <button class="cancel-btn" onclick="window.location.href='/user.html'">取消</button>
+        </div>
+    </div>
+
+    <script src="chat.js"></script>
+</body>
+
+</html>

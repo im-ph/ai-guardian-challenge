@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对话详情 - AI守护者挑战</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <div class="chat-title">
+                <h2>🛡️ 对话详情</h2>
+                <div id="turnCounter" class="turn-counter"></div>
+            </div>
+            <div style="display:flex;gap:8px;">
+                <button onclick="window.close()" class="back-btn">← 关闭</button>
+                <button onclick="window.location.href='/'" class="home-btn">🏠 首页</button>
+            </div>
+        </header>
+        <div id="chatMessages" class="chat-messages">
+            <div class="loading">加载中...</div>
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const conversationId = urlParams.get('id');
+
+        async function loadConversation() {
+            if (!conversationId) {
+                document.getElementById('chatMessages').innerHTML = '<div class="no-data">未指定对话ID</div>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/conversation/${conversationId}`);
+                if (!response.ok) throw new Error('对话不存在');
+
+                const conversation = await response.json();
+                const messagesDiv = document.getElementById('chatMessages');
+                messagesDiv.innerHTML = '';
+
+                conversation.messages.forEach(msg => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = `message ${msg.role}`;
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'message-content';
+
+                    const imgMatch = msg.content.match(/\[图片:(\/Pic\/[^\]]+)\]/);
+                    if (imgMatch) {
+                        const imgUrl = imgMatch[1];
+                        const textOnly = msg.content.replace(/\[图片:\/Pic\/[^\]]+\]\n?/, '').trim();
+                        const img = document.createElement('img');
+                        img.src = imgUrl;
+                        img.className = 'message-image';
+                        img.alt = '用户上传的图片';
+                        img.onclick = () => window.open(imgUrl, '_blank');
+                        contentDiv.appendChild(img);
+                        if (textOnly) {
+                            const textNode = document.createTextNode(textOnly);
+                            contentDiv.appendChild(textNode);
+                        }
+                    } else {
+                        contentDiv.textContent = msg.content;
+                    }
+
+                    messageDiv.appendChild(contentDiv);
+                    messagesDiv.appendChild(messageDiv);
+                });
+
+                document.getElementById('turnCounter').textContent =
+                    `轮次: ${conversation.turnCount}/${conversation.maxTurns}`;
+
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            } catch (error) {
+                console.error('加载对话失败:', error);
+                document.getElementById('chatMessages').innerHTML =
+                    '<div class="no-data">对话不存在或已被删除</div>';
+            }
+        }
+
+        loadConversation();
+    </script>
+</body>
+
+</html>

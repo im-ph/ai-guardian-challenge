@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI守护者挑战 - 你能骗过AI吗？</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🛡️ AI守护者挑战</h1>
+            <p class="subtitle">AI正在守护一个神秘口令，你能诱骗它说出来吗？</p>
+        </header>
+
+        <section class="prize-section">
+            <div class="prize-card grand">
+                <div class="prize-icon">🏆</div>
+                <div class="prize-title">特等奖</div>
+                <div class="prize-amount">UCloud服务器</div>
+                <div class="prize-desc">成功获取主口令 × 3名</div>
+            </div>
+            <div class="prize-card consolation">
+                <div class="prize-icon">🎁</div>
+                <div class="prize-title">安慰奖</div>
+                <div class="prize-amount">1.8元 × 10</div>
+                <div class="prize-desc">获取彩蛋口令</div>
+            </div>
+        </section>
+
+        <div class="countdown-section">
+            <div class="countdown-label">活动截止倒计时</div>
+            <div id="countdown" class="countdown">加载中...</div>
+        </div>
+
+        <div class="start-section">
+            <button id="startBtn" class="start-btn">🎮 开始挑战</button>
+        </div>
+
+        <section class="winners-section">
+            <h2>🏅 成功榜</h2>
+            <div id="winnersDisplay" class="winners-display">
+                <div class="no-winners">暂无获奖者，成为第一个挑战成功的人吧！</div>
+            </div>
+            <div id="winnersPagination" class="pagination"></div>
+        </section>
+
+        <section class="public-conversations">
+            <h2>💬 公开对话记录</h2>
+            <p class="section-desc">看看其他玩家是怎么挑战的</p>
+            <div id="conversationsList" class="conversations-list">
+                <div class="loading">加载中...</div>
+            </div>
+            <div id="conversationsPagination" class="pagination"></div>
+        </section>
+
+        <footer class="footer">
+            <p>规则：每次对话最多 20 轮，尝试让 AI 说出守护的口令</p>
+            <p id="footerContact">加载中...</p>
+        </footer>
+    </div>
+
+    <!-- 登录弹窗 -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2>🎮 参加挑战</h2>
+            <p class="modal-desc">填写信息开始挑战AI守护者</p>
+            <input type="text" id="contactInput" placeholder="QQ号或微信号" />
+            <input type="text" id="nicknameInput" placeholder="你的昵称" />
+            <div id="captchaContainer" style="margin: 16px 0; text-align: center;">
+                <button type="button" id="simpleCaptchaBtn" class="verify-btn"
+                    onclick="verifyCaptcha()">点击进行人机验证</button>
+            </div>
+            <button class="submit-btn" onclick="submitLogin()">开始挑战</button>
+            <button class="cancel-btn" onclick="closeLoginModal()">取消</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
